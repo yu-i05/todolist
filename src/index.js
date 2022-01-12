@@ -1,0 +1,35 @@
+import "./styles.css";
+
+const onClickAdd = () => {
+  const inputText = document.getElementById("add-text").value;
+  document.getElementById("add-text").value = "";
+
+  const div = document.createElement("div");
+  div.className = "list-row";
+
+  const li = document.createElement("li");
+  li.innerText = inputText;
+
+  const completButton = document.createElement("button");
+  completButton.innerText = "完了";
+  completButton.addEventListener("click", () => {
+    alert("完了");
+  });
+
+  const deleteButton = document.createElement("button");
+  deleteButton.innerText = "削除";
+  deleteButton.addEventListener("click", () => {
+    const deleteTaret = deleteButton.parentNode;
+    document.getElementById("incomplete-list").removeChild(deleteTaret);
+  });
+
+  div.appendChild(li);
+  div.appendChild(completButton);
+  div.appendChild(deleteButton);
+
+  document.getElementById("incomplete-list").appendChild(div);
+};
+
+document
+  .getElementById("add-button")
+  .addEventListener("click", () => onClickAdd());
